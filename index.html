@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/main.css">
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.carousel').carousel();
+        });
+    </script>
+    <title>Movie Website</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter&family=Playball&family=Poltawski+Nowy&family=Poppins:wght@500&family=Roboto+Condensed&family=Ubuntu:ital,wght@0,400;1,300;1,400&family=Varela+Round&family=Ysabeau:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+:root {
+    --primary: #ff3700;
+}
+
+body {
+    background: #000000;
+    font-family: 'poppins', sans-serif;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.0rem 10.0rem;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 4.0rem;
+    color: #ffffff;
+    letter-spacing: .1rem;
+    font-weight: 800;
+}
+
+.nav {
+    display: flex;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.nav li {
+    font-size: 1.9rem;
+    list-style: none;
+    margin: 0 1.0rem;
+}
+
+.nav li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: .1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+header .nav i:hover{
+    transform: scale(1.5);
+}
+
+.nav li:hover a {
+    color-interpolation-filters: var(--primary);
+}
+
+.search {
+    position: relative;
+    width: 30.0rem;
+    height: 4.0rem;
+}
+
+.search input {
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    background: transparent;
+    border: .1rem solid rgba(255, 255, 255, 0.5);
+    outline: none;
+    border-radius: .4rem;
+    padding: 0 1.0rem 0 4.5rem !important;
+    backdrop-filter: blur(1.0rem);
+}
+
+.search input::placeholder {
+    color: #ffffff;
+}
+
+.search i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1.0rem;
+    padding-right: 1.0rem;
+    color: #ffffff;
+    border-right: .1rem solid #ffffff;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 10.0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url(movie_image/Ijq2IZd.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.banner::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+    position: relative;
+    max-width: 55.0rem;
+    display: none;
+    visibility: hidden;
+    transform: scale(0);
+    transition: 0.5s;
+}
+
+.content.active {
+    display: block;
+    visibility: visible;
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+.movie-title {
+    width: 35.0rem;
+    max-width: 35.0rem;
+}
+
+.banner .content h4 {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    font-size: 3.0rem;
+}
+
+.banner .content h4 span {
+    padding: 0 1.0rem;
+    border-right: .1rem solid rgba(255, 255, 255, 0.5);
+}
+
+.banner .content h4 span:first-child {
+    padding-left: 0;
+}
+
+.banner .content h4 span:last-child {
+    border-right: none;
+}
+
+.banner .content h4 span i {
+    background: var(--primary);
+    color: #ffffff;
+    padding: 0 8px;
+    display: inline-block;
+    border-radius: .2rem;
+}
+
+.banner .content p {
+    font-size: 1.6em;
+    font-weight: 300;
+    line-height: 1.6em;
+    color: #ffffff;
+    margin: 1.0rem 0 2.0rem;
+}
+
+.banner .content .button a {
+    font-size: 1.6rem;
+    position: relative;
+    display: inline-block;
+    margin-right: 2.0rem;
+    background: var(--primary);
+    color: #ffffff;
+    padding: .6rem 2.0rem;
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.banner .content .button a:nth-child() {
+    background: rgba(0, 0, 0, 0.5);
+    border: .1rem solid rgba(255, 255, 255, 0.2);
+}
+
+.banner .content .button a:hover:nth-child() {
+    background: var(--primary)
+}
+
+.banner .carousel-box {
+    position: relative;
+    height: 45rem;
+    min-width: 80.0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 2.0rem 2.0rem 5.0rem rgba(0, 0, 0, 0.5);
+    border: .1rem solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2.0rem);
+    border-radius: 1.0rem;
+}
+
+.carousel{
+    position: relative;
+    height: 55.0rem;
+    perspective: 1500;
+}
+
+.carousel .carousel-item{
+    width: 25.0rem;
+    cursor: pointer;
+}
+
+.carousel .carousel-item img{
+    max-width: 23.5rem;
+    border-radius: 1.0rem;
+    transform: translateX(.8rem) translateY(-10.0rem);
+    object-fit: cover;
+    object-position: center;
+}
+
+.play{
+    position: absolute;
+    bottom: 5.0rem;
+    left: 10.0rem;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .1rem;
+    font-size: 1.2em;
+    cursor: pointer !important;
+    transition: 0.3s;
+}
+
+.play i{
+    margin-right: 1.0rem;
+    font-size: 2.0rem;
+    cursor: pointer !important;
+}
+
+.sci i:hover{
+    transform: scale(1.5);
+}
+
+.play:hover{
+    color: var(--primary);
+}
+
+.play i:hover{
+    transform: scale(1.4);
+}
+
+.sci{
+    position: absolute;
+    bottom: 5.0rem;
+    right: 10.0rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.sci a{
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .1rem;
+    font-size: 2.5rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.sci a:hover{
+    color: var(--primary);
+}
+
+.trailer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2.0rem);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+img {
+    width: 5.0rem;
+    border-style: none;
+}
+.trailer.active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.trailer video{
+    max-width: 90.0rem;
+    outline: none;    
+}
+
+.close{
+    position: absolute;
+    top: 3.0rem;
+    right: 3.0rem;
+    cursor: pointer;
+    filter: invert(1);
+    max-width: 3.0rem;
+}
+
+/* header responsive code */
+@media(max-width:998px){
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width:768px) {
+    html {
+        font-size: 45%;
+    }
+    
+}
+
+@media (max-width:600px) {
+    html {
+        font-size: 35%;
+    }
+    
+}
+  </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">maxORIGINAL</a>
+        <ul class="nav">
+            <li><a href="#"></a><i class="fa fa-home" aria-hidden="true"></i></li>
+            <li><a href="#"></a>Adults</li>
+            <li><a href="#"></a>Kids</li>
+            <li><a href="#"></a>Trend</li>
+            <li><a href="#"></a>My List</li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+    </header>
+    <div class="banner">
+        <div class="content the-harry-potter">
+            <!-- <img src="movie_image/th.jpeg" alt="" class="movie-title"> -->
+            <h4>
+                <span>2010</span><span>2h26m</span><span>Fantasy</span><span>13+</span>
+            </h4>
+            <p>
+                After Voldemort takes over the Ministry of Magic, Harry, Ron and Hermione are forced into hiding. They
+                try to decipher the clues left to them by Dumbledore to find and destroy Voldemort's Horcruxes.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="content the-dinosaur">
+            <!-- <img 
+            class="movie-title"
+            src="movie_image/movie-title/hqdefault.jpg" 
+            alt="Movie Name" > -->
+            <h4>
+                <span>2000</span><span>1h22m</span><span>Adventure</span><span>10+</span>
+            </h4>
+            <p>
+                A family of lemurs raise Aladar, an orphan dinosaur, but meteors ruin their green paradise. They and
+                other herbivores try to find a site with ample greenery and water, but carnivores chase them.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="content the-titanic">
+            <!-- <img 
+            class="movie-title"
+            src="movie_image/movie-title/download.png" 
+            alt="Movie Name"> -->
+            <h4>
+                <span>1997</span><span>3h14m</span><span>Romance</span><span>15+</span>
+            </h4>
+            <p>
+                Seventeen-year-old Rose hails from an aristocratic family and is set to be married. When she boards the
+                Titanic, she meets Jack Dawson, an artist, and falls in love with him.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="content the-dark">
+            <!-- <img 
+            class="movie-title"
+            src="movie_image/movie-title/the-dark.jpeg" 
+            alt="Movie Name"> -->
+            <h4>
+                <span>2018</span><span>1h35m</span><span>Horror</span><span>18+</span>
+            </h4>
+            <p>
+                A murderous, undead girl haunts the remote stretch of woods where she was killed decades earlier. One
+                night, she discovers a blind boy hiding in the trunk of one of her victim's cars. Her decision to let
+                the boy live throws her solitary existence into upheaval, and ultimately forces her to re-examine just
+                how much of her humanity her murderer was able to destroy.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="content the-hero">
+            <!-- <img src="movie_image/movie-title/aI7B7P5.png" alt="" class="movie-title"> -->
+            <h4>
+                <span>2017</span><span>1h33m</span><span>Romance</span><span>13+</span>
+            </h4>
+            <p>
+                Lee Hayden, an ageing Western movie star, spends his days reliving past glories before a cancer
+                diagnosis forces him to come to terms with his life and legacy.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="content the-present">
+            <!-- <img src="movie_image/movie-title/present-design-china-name.png" alt="" class="movie-title"> -->
+            <h4>
+                <span>2020</span><span>24m</span><span>Drama/Short</span><span>12+</span>
+            </h4>
+            <p>
+                Yusef and his young daughter set out in the West Bank to buy his wife a gift on their wedding
+                anniversary.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="content the-kgf">
+            <!-- <img src="movie_image/movie-title/maxresdefault.jpg" alt="" class="movie-title"> -->
+            <h4>
+                <span>2018</span><span>2h35m</span><span>Action</span><span>18+</span>
+            </h4>
+            <p>
+                Rocky, a young man, seeks power and wealth in order to fulfil a promise to his dying mother. His quest
+                takes him to Mumbai, where he gets involved with the notorious gold mafia.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="content the-mummy">
+            <!-- <img src="movie_image/movie-title/Mummy3_logo-large.webp" alt="" class="movie-title"> -->
+            <h4>
+                <span>2017</span><span>1h50m</span><span>Action</span><span>18+</span>
+            </h4>
+            <p>
+                After Sergeant Nick and Corporal Chris call an air strike on an enemy stronghold, they stumble upon the
+                tomb of Princess Ahmanet. The princess is set free and Nick has to fight for his life.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="content the-class">
+            <!-- <img src="movie_image/movie-title/th.jpeg" alt="" class="movie-title"> -->
+            <h4>
+                <span>2023</span><span>6h51m</span><span>Drama</span><span>18+</span>
+            </h4>
+            <p>
+                Three lower-class youths attend a prestigious international school in Delhi. Following the dramatic
+                dynamics of the exclusive school and the tumultuous events that ensue.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="content the-talk-to-me">
+            <!-- <img src="movie_image/movie-title/Talk to Me (6).JPG" alt="" class="movie-title"> -->
+            <h4>
+                <span>2022</span><span>1h35m</span><span>Horror</span><span>18+</span>
+            </h4>
+            <p>
+                When a group of friends discovers how to conjure spirits by using an embalmed hand, they become hooked
+                on the new thrill -- until one of them unleashes terrifying supernatural forces.
+            </p>
+            <div class="button">
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Watch</a>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>My List</a>
+            </div>
+        </div>
+        <div class="carousel-box">
+            <div class="carousel">
+                <div class="carousel-item" onClick="changeBg('bg-harry.jpg', 'the-harry-potter');">
+                    <img src="movie_image/bk1EWfRW0U76sWZiLDL1T7J0XV9.jpg" alt="">
+                </div>
+                <div class="carousel-item" onClick="changeBg('bg-dinosaur.jpg','the-dinosaur');">
+                    <img src="movie_image/thumb-350721.jpg" alt="">
+                </div>
+                <div class="carousel-item" onClick="changeBg('bg-titanic.jpg','the-titanic');">
+                    <img src="movie_image/titanic-1997-film-music-n-film-prints.jpg" alt="">
+                </div>
+                <div class="carousel-item" onClick="changeBg('bg-thedark.jpg','the-dark');">
+                    <img src="movie_image/1131w-AOBSIAmLWOs.webp" alt="">
+                </div>
+                <div class="carousel-item" onClick="changeBg('bg-hero.jpg','the-hero');">
+                    <img src="movie_image/download.jpeg" alt="">
+                </div>
+                <div class="carousel-item" onClick="changeBg('bg-present.jpg','the-present');">
+                    <img src="movie_image/fda65cbaa9569a29cda1c5cf25f5e337.jpg" alt="">
+                </div>
+                <div class="carousel-item" onClick="changeBg('bg-kgf.jpg','the-kgf');">
+                    <img src="movie_image/KGF-Action-Movie-Poster-Background-Stock-Image-803x1080.jpg" alt="">
+                </div>
+                <div class="carousel-item" onClick="changeBg('bg-themummy.jpg','the-mummy');">
+                    <img src="movie_image/C9nFQsIVoAEit4O.jpg" alt="">
+                </div>
+                <div class="carousel-item" onClick="changeBg('bg-class.jpg','the-class');">
+                    <img src="movie_image/class_tv_series_tv_series-704531053-mmed.jpg" alt="">
+                </div>
+                <div class="carousel-item" onClick="changeBg('bg-talktome.jpg','the-talk-to-me')">
+                    <img src="movie_image/images.jpeg" alt="">
+                </div>
+            </div>
+        </div>
+        <a href="#" class="play" onClick="toggleVideo();"><i class="fa fa-play-circle-o"aria-hidden="true"><i>
+            Watch Trailer
+        </a>
+        <ul class="sci">
+            <li>
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+    <div class="trailer">
+        <video src="movie_image/Harry Potter Max Original Series _ Official Announcement _ Max.mp4" muted
+            controls="true" autoplay="true"></video>
+        <img class="close" src="movie_image/close-window-icon-9.jpg" alt="" onClick="toggleVideo();" />
+    </div>
+          <script>
+            function toggleVideo(){
+    const trailer = document.querySelector('.trailer')
+    const video = document.querySelector('video')
+    video.pause();
+    trailer.classList.toggle('active')
+}
+
+function changeBg(bg, title) {
+    const banner = document.querySelector('.banner');
+    const contents = document.querySelectorAll('.content');
+    banner.style.background = `url("../movie_image/movie_backcover/${bg}")`;
+    banner.style.backgroundSize = 'cover';
+    banner.style.backgroundPosition = 'center';
+
+    contents.forEach(content => {
+        content.classList.remove('active');
+        if (content.classList.contains(title)){
+            content.classList.add('active');
+        }
+    });
+}
+          </script>
+</body>
+
+</html>
